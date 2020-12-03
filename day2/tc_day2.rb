@@ -11,4 +11,9 @@ class TestDay2 < Test::Unit::TestCase
     array = File.read("day2/input.txt").split("\n")
     assert_equal(0, PasswordValidator.number_of_valid(array))
   end
+
+  def test_example_part_2
+    array = ["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"]
+    assert_equal(1, PasswordValidator.number_of_valid(array))
+  end
 end

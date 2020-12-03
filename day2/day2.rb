@@ -10,15 +10,8 @@ class PasswordValidator
   end
 
   def self.valid?(min, max, letter, password)
-    hash = {}
-    password.split("").each do |char|
-      hash[char.to_sym] = hash[char.to_sym] ? (hash[char.to_sym] + 1) : 1
-    end
-
-    if hash[letter.to_sym].nil?
-      false
-    else
-      hash[letter.to_sym] <= max && hash[letter.to_sym] >= min
-    end
+    min -= 1
+    max -= 1
+    (password[min] == letter) ^ (password[max] == letter)
   end
 end
