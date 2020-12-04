@@ -1,7 +1,7 @@
 require_relative "graph"
 require "test/unit"
 
-class TestDay23 < Test::Unit::TestCase
+class TestDay3 < Test::Unit::TestCase
   def test_graph_value_at
     graph = Graph.new("day3/example.txt")
     assert_equal(".", graph.value_at(0, 0))
