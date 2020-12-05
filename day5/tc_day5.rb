@@ -22,6 +22,10 @@ class TestDay5 < Test::Unit::TestCase
     seat_ids = passes.map { |pass| 
       BoardingPass.new(pass).seat_id 
     }
+
+    diff = (12..871).to_a - seat_ids
+    puts diff
+
     assert_equal(871, seat_ids.max)
   end
 end
