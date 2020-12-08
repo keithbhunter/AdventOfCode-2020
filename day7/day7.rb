@@ -1,7 +1,7 @@
 class Rule
   def initialize(name, quantity)
     @name = name
-    @quanitity = quantity
+    @quantity = quantity.to_i
     @sub_rules = []
   end
 
@@ -15,6 +15,10 @@ class Rule
 
   def name
     @name
+  end
+
+  def quantity
+    @quantity
   end
 end
 
@@ -58,5 +62,18 @@ class Rules
     end
 
     includes
+  end
+
+  def number_of_bags_in(name)
+    rule = @rules[name]
+
+    rule.sub_rules.reduce(0) do |num, sub_rule|
+      num_of_bags = number_of_bags_in(sub_rule.name)
+      if num_of_bags == 0
+        num + sub_rule.quantity
+      else
+        num + sub_rule.quantity + sub_rule.quantity * num_of_bags
+      end
+    end
   end
 end
