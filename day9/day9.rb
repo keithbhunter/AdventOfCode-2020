@@ -10,6 +10,26 @@ def first_number_thingy(file, preamble)
     end
     return number if !has_sum
   end
-  
+
+  raise
+end
+
+def contiguous_number_sum(file, num)
+  numbers = File.read(file).split("\n").map(&:to_i)
+  start = 0
+
+  while start < numbers.length do
+    offset = 1
+
+    while start + offset < numbers.length do
+      range = numbers.slice(start, offset)
+      sum = range.reduce(0, :+)
+      return range if sum == num
+      offset += 1
+    end
+
+    start += 1
+  end
+
   raise
 end
